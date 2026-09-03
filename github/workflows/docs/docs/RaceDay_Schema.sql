@@ -54,3 +54,17 @@ CREATE TABLE Categories (
     entryFee DECIMAL(10,2) NOT NULL DEFAULT 0.00 CHECK (entryFee >= 0),
     CONSTRAINT FK_Categories_Events FOREIGN KEY (eventId) REFERENCES Events(eventId) ON DELETE CASCADE
 );
+
+-- 4. Event Enrolments Table
+CREATE TABLE Enrolments (
+    enrolmentId INT IDENTITY(1,1) PRIMARY KEY,
+    userId INT NOT NULL,
+    eventId INT NOT NULL,
+    categoryId INT NOT NULL,
+    enrolmentDate DATETIME NOT NULL DEFAULT GETDATE(),
+    status VARCHAR(20) NOT NULL DEFAULT 'Confirmed' CHECK (status IN ('Pending', 'Confirmed', 'Cancelled')),
+    CONSTRAINT FK_Enrolments_Users FOREIGN KEY (userId) REFERENCES Users(userId),
+    CONSTRAINT FK_Enrolments_Events FOREIGN KEY (eventId) REFERENCES Events(eventId),
+    CONSTRAINT FK_Enrolments_Categories FOREIGN KEY (categoryId) REFERENCES Categories(categoryId),
+    CONSTRAINT UQ_User_Event UNIQUE (userId, eventId)
+);
