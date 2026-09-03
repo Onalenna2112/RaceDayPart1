@@ -68,3 +68,14 @@ CREATE TABLE Enrolments (
     CONSTRAINT FK_Enrolments_Categories FOREIGN KEY (categoryId) REFERENCES Categories(categoryId),
     CONSTRAINT UQ_User_Event UNIQUE (userId, eventId)
 );
+
+-- 5. Payments Table
+CREATE TABLE Payments (
+    paymentId INT IDENTITY(1,1) PRIMARY KEY,
+    enrolmentId INT NOT NULL UNIQUE,
+    amount DECIMAL(10,2) NOT NULL CHECK (amount >= 0),
+    paymentStatus VARCHAR(20) NOT NULL CHECK (paymentStatus IN ('Paid', 'Pending', 'Failed')),
+    paymentDate DATETIME NOT NULL DEFAULT GETDATE(),
+    transactionReference VARCHAR(100) NOT NULL UNIQUE,
+    CONSTRAINT FK_Payments_Enrolments FOREIGN KEY (enrolmentId) REFERENCES Enrolments(enrolmentId) ON DELETE CASCADE
+);
