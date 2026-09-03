@@ -90,3 +90,37 @@ CREATE TABLE Results (
     CONSTRAINT FK_Results_Enrolments FOREIGN KEY (enrolmentId) REFERENCES Enrolments(enrolmentId) ON DELETE CASCADE
 );
 GO
+
+-- =========================================================
+-- SEED DATA
+-- =========================================================
+
+INSERT INTO Users (fullName, email, password, role) VALUES
+('Sipho Nkosi', 'sipho.organiser@raceday.co.za', 'hashed_pass_123', 'Organiser'),
+('Anika van Zyl', 'anika.organiser@raceday.co.za', 'hashed_pass_456', 'Organiser'),
+('David Smith', 'david.runner@gmail.com', 'hashed_pass_789', 'Participant'),
+('Zanele Khumalo', 'zanele.cyclist@gmail.com', 'hashed_pass_012', 'Participant');
+
+INSERT INTO Events (organiserId, name, description, eventDate, location, distance, eventType) VALUES
+(1, 'Soweto Marathon', 'Iconic road running event across historical landmarks.', '2026-11-01 06:00:00', 'Soweto, Johannesburg', 42.20, 'Run'),
+(2, 'Cape Town Cycle Challenge', 'Premier road cycling event along coastal routes.', '2026-03-08 06:30:00', 'Cape Town', 109.00, 'Cycle'),
+(1, 'Durban Promenade Walk', 'Scenic 10km coastal walk.', '2026-10-15 07:00:00', 'Durban', 10.00, 'Walk');
+
+INSERT INTO Categories (eventId, name, minAge, maxAge, distanceKm, entryFee) VALUES
+(1, 'Open Senior 42km', 20, 49, 42.20, 350.00),
+(1, 'Under 20 Half Marathon', 15, 19, 21.10, 250.00),
+(2, '109km Main Challenge', 18, 70, 109.00, 650.00),
+(3, '10km Family Walk', 5, 80, 10.00, 100.00);
+
+INSERT INTO Enrolments (userId, eventId, categoryId, status) VALUES
+(3, 1, 1, 'Confirmed'),
+(4, 2, 3, 'Confirmed');
+
+INSERT INTO Payments (enrolmentId, amount, paymentStatus, transactionReference) VALUES
+(1, 350.00, 'Paid', 'TXN-SOWETO-001'),
+(2, 650.00, 'Paid', 'TXN-CTCYCLE-002');
+
+INSERT INTO Results (enrolmentId, finishTime, position) VALUES
+(1, '03:15:42', 12),
+(2, '02:48:10', 45);
+GO
