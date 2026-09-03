@@ -79,3 +79,14 @@ CREATE TABLE Payments (
     transactionReference VARCHAR(100) NOT NULL UNIQUE,
     CONSTRAINT FK_Payments_Enrolments FOREIGN KEY (enrolmentId) REFERENCES Enrolments(enrolmentId) ON DELETE CASCADE
 );
+
+-- 6. Results Table
+CREATE TABLE Results (
+    resultId INT IDENTITY(1,1) PRIMARY KEY,
+    enrolmentId INT NOT NULL UNIQUE,
+    finishTime VARCHAR(20) NOT NULL,
+    position INT NOT NULL CHECK (position > 0),
+    recordedAt DATETIME NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT FK_Results_Enrolments FOREIGN KEY (enrolmentId) REFERENCES Enrolments(enrolmentId) ON DELETE CASCADE
+);
+GO
