@@ -28,3 +28,17 @@ CREATE TABLE Users (
     role VARCHAR(20) NOT NULL CHECK (role IN ('Organiser', 'Participant')),
     createdAt DATETIME NOT NULL DEFAULT GETDATE()
 );
+
+-- 2. Events Table
+CREATE TABLE Events (
+    eventId INT IDENTITY(1,1) PRIMARY KEY,
+    organiserId INT NOT NULL,
+    name VARCHAR(150) NOT NULL,
+    description NVARCHAR(MAX) NULL,
+    eventDate DATETIME NOT NULL,
+    location VARCHAR(150) NOT NULL,
+    distance DECIMAL(5,2) NOT NULL CHECK (distance > 0),
+    eventType VARCHAR(20) NOT NULL CHECK (eventType IN ('Walk', 'Run', 'Cycle')),
+    createdAt DATETIME NOT NULL DEFAULT GETDATE(),
+    CONSTRAINT FK_Events_Users FOREIGN KEY (organiserId) REFERENCES Users(userId)
+);
