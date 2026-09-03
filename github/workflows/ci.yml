@@ -1,0 +1,30 @@
+name: RaceDay Docs CI Validation
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate-structure:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Check /docs Directory and Required Files
+        run: |
+          echo "Validating repository structure..."
+          test -d docs || (echo "ERROR: Missing /docs folder" && exit 1)
+          test -f docs/API_Plan.md || (echo "ERROR: Missing API_Plan.md" && exit 1)
+          test -f docs/RaceDay_Schema.sql || (echo "ERROR: Missing RaceDay_Schema.sql" && exit 1)
+
+          if [ -f docs/ERD.png ] || [ -f docs/ERD.pdf ]; then
+            echo "ERD file present."
+          else
+            echo "ERROR: Missing ERD image or PDF in /docs"
+            exit 1
+          fi
+
+          echo "All required files verified successfully!"
