@@ -25,6 +25,8 @@ All required planning, database, and architectural documentation are maintained 
 * **Entity Relationship Diagram (ERD):** [`/docs/ERD.pdf`](./docs/ERD.pdf)
 * **API Endpoint Plan:** [`/docs/API_Plan.md`](./docs/API_Plan.md)
 * **SQL Database Schema Script:** [`/docs/RaceDay_Schema.sql`](./docs/RaceDay_Schema.sql)
+* YouTube video:** [https://youtu.be/6Gpf01Pnj_U]
+  
 
 ---
 
