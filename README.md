@@ -26,6 +26,8 @@ All required planning, database, and architectural documentation are maintained 
 * **API Endpoint Plan:** [`/docs/API_Plan.md`](./docs/API_Plan.md)
 * **SQL Database Schema Script:** [`/docs/RaceDay_Schema.sql`](./docs/RaceDay_Schema.sql)
 * YouTube video:** [https://youtu.be/6Gpf01Pnj_U]
+* Screenshot of the green check mark:** [https://github.com/Onalenna2112/RaceDayPart1/blob/main/docs/Screenshot%202026-09-04%20160453.png]
+  
   
 
 ---
