@@ -118,3 +118,20 @@ INSERT INTO Results (enrolmentId, finishTime, position) VALUES
 (1, '03:15:42', 12),
 (2, '02:48:10', 45);
 GO
+
+USE RaceDay;
+GO
+
+-- Query all 6 entities to confirm populated seed data
+
+SELECT * FROM Users;
+
+SELECT * FROM Events;
+
+SELECT * FROM Categories;
+
+SELECT * FROM Enrolments;
+
+SELECT * FROM Payments;
+
+SELECT * FROM Results;
