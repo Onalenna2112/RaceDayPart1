@@ -64,8 +64,10 @@ SELECT * FROM Results;
 The RaceDay API is the back end of the RaceDay system. It handles users, events, categories,
 enrolments and results, and it enforces role-based access for **Organisers** and **Participants**.
 
-- **Video demo (YouTube, unlisted):** [PASTE YOUR YOUTUBE LINK HERE]
-- **Build status:** ![Green build](docs/green-build.png) *(add your screenshot of the green GitHub Actions run as `docs/green-build.png`)*
+- **Video demo (YouTube, unlisted):** https://youtu.be/bng4aRyeaIo
+
+- **Build status:** ![Green build](docs/green-build.png) <img width="1342" height="713" alt="Screenshot 2026-10-16 223553" src="https://github.com/user-attachments/assets/26a83770-bc98-4e1e-964c-fcbb5df9cfd6" />
+
 
 ## Technology
 
